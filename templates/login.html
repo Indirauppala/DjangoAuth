@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            margin-top: 200px;
+            text-align: center;
+            background-color: burlywood;
+        }
+        #login {
+            border: 1px solid black;
+            margin: 0 auto;
+            width: 300px;
+            padding: 20px;
+            background-color: floralwhite;
+        }
+    </style>
+</head>
+<body>
+    <div id="login">
+        <form method="post">
+            {% csrf_token %}
+            <h2>Login Form</h2>
+            {% if error_message %}
+                <p style="color: red;">{{ error_message }}</p>
+            {% endif %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password"><br><br>
+            <button type="submit" style="background-color: black; color: white;">Login</button>
+            <br><br>
+            <a href="{% url 'password_reset' %}" style="text-decoration: none;margin-right: 130px;">Forgot password?</a>
+        </form>
+        <p>Don't have an account yet? <a href="/">Sign up</a></p>
+
+    </div>
+</body>
+</html>
